@@ -1,0 +1,38 @@
+:root {
+  --text-gray: #A0B0B9;
+  --text-black: #4A4A4A;
+  --bg-color: #E5E5E5;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 320px;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+menu,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
