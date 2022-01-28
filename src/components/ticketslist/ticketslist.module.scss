@@ -1,0 +1,33 @@
+.ticketslist {
+    display: grid;
+    gap: 20px;
+}
+
+.button {
+    max-width: 500px;
+    max-height: 50px;
+    background: #2196F3;
+    border-color: #2196F3;
+    color: white;
+    height: 5.5vh;
+    border-radius: 5px;
+    font-size: calc(7px + 5 * (100vw/960));
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+@media (min-width: 1024px) {
+    .button{
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 425px){
+    .button{
+      font-size: calc(6px + 5 * ((100vw - 320px)/960));
+    }
+  }
+
+

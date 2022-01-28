@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-
-function App() {
-  return (
-    <div>GO FUCK YOURSELF</div>
-  )
-}
+import App from './components/app';
 
 ReactDOM.render(
     <App />,

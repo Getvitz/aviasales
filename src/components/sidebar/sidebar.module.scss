@@ -1,0 +1,15 @@
+.sidebar {
+    max-width: 232px;
+    max-height: 252px;
+    margin-left: 5px;
+    grid-area: sidebar;
+}
+
+@media (max-width: 425px) {
+    .sidebar {
+        min-width: 310px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}
+

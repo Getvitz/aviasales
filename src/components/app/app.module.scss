@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+:root {
+    --text-gray: #A0B0B9;
+    --text-black: #4A4A4A;
+    --bg-color: #F3F7FA;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
+  
+  body {
+    min-width: 320px;
+    font-size: calc(7px + 5 * (100vw/960));
+    background-color: var(--bg-color);
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    color: var(--text-black);
+  }
+  
+  @media (min-width: 1024px) {
+    body{
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 425px){
+    body{
+      font-size: calc(6px + 5 * ((100vw - 320px)/960));
+    }
+  }
+  
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  menu,
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 717px;
+  min-width: 300px;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  grid-template-rows: 140px 1fr;
+  grid-template-columns: 0.5fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 425px) {
+  .wrapper {
+    grid-template-areas:
+    "header"
+    "sidebar"
+    "main";
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 5px;
+  }
+}
