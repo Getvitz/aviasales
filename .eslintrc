@@ -33,6 +33,7 @@
         "assert": "either"
       }],
       "default-param-last": ["off"],
+      "no-shadow": ["off"],
       "consistent-return": ["off"],
       "react/state-in-constructor": ["off"],
       "react/jsx-props-no-spreading": ["off"],

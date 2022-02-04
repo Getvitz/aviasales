@@ -11,23 +11,23 @@ export default function Filter() {
     const twotransfer = useSelector(state => state.filter.twotransfer);
     const threetransfer= useSelector(state => state.filter.threetransfer);
 
-    if(notransfer && onetransfer && twotransfer && threetransfer && !all) dispatch({type: "ALL"})
+    if(notransfer && onetransfer && twotransfer && threetransfer && !all) dispatch({type: "FILTER_ALL"})
     const onCheckboxChange = (event) => {
         switch(event.target.name) {
             case "All": 
-                 dispatch({type: "ALL"});
+                 dispatch({type: "FILTER_ALL"});
                  break;
             case "Notransfer": 
-                 dispatch({type: "NOTRANSFER"})
+                 dispatch({type: "FILTER_NOTRANSFER"})
                  break;
             case "Onetransfer": 
-                 dispatch({type: "ONETRANSFER"})
+                 dispatch({type: "FILTER_ONETRANSFER"})
                  break;
             case "Twotransfer": 
-                 dispatch({type: "TWOTRANSFER"})
+                 dispatch({type: "FILTER_TWOTRANSFER"})
                  break;
             case "Threetransfer": 
-                 dispatch({type: "THREETRANSFER"})
+                 dispatch({type: "FILTER_THREETRANSFER"})
                  break;
         default: 
             return event

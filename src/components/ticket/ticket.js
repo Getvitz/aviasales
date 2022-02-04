@@ -1,29 +1,43 @@
 import React from "react";
+import { format, parseISO } from 'date-fns';
 import styles from './ticket.module.scss';
 
-export default function Ticket() {
+// eslint-disable-next-line
+export default function Ticket({price, carrier, segments}) {
+    const logo = `https://pics.avs.io/99/36/'${carrier}.png`;
+// eslint-disable-next-line
+    const flightInfo = segments.map((segment, i) => {
+        const key = i;
+        const {origin, destination, duration, stops, date} = segment;
+// eslint-disable-next-line
+        const stopList = stops.length > 1 ? stops.join(', ') : stops.length === 0 ? 'ПРЯМОЙ' : stops;
+        // eslint-disable-next-line
+        const stopListTitle = stops.length === 1 ? 'Пересадка' : stops.length > 1 ?'Пересадки' :  'Без пересадок';
+    
+        return (
+          <div key={key} className={styles.ticket_info}>
+            <div>
+              <div className={styles.ticket_info_main}>{`${origin} - ${destination}`}</div>
+              <div className={styles.ticket_info_details}>{`${format(parseISO(date.slice(0, -5)), 'HH:mm')} - ${format(new Date(date).getTime() + duration * 60 * 1000, 'HH:mm')}`}</div>
+            </div>
+            <div>
+              <div className={styles.ticket_info_main}>В пути</div>
+              <div className={styles.ticket_info_details}>{format(duration * 60 * 1000, 'HHч mmм')}</div>
+            </div>
+            <div>
+              <div className={styles.ticket_info_main}>{stops.length > 0 ? stops.length : null} {stopListTitle}</div>
+              <div className={styles.ticket_info_details}>{stopList}</div>
+            </div>
+          </div>
+        )
+      })
     return (
         <div className={styles.ticket}>
             <header className={styles.header}>
-                <div className={styles.price}>13 400</div>
-                <img className={styles.logo} alt="aviacompany-logo" src="#" />
+                <div className={styles.price}>{price} ₽</div>
+                <img className={styles.logo} alt="aviacompany-logo" src={logo} />
             </header>
-            <div className={styles.ticket_info}>
-                <div className={styles.ticket_info_main}>MOW-HKT</div>
-                <div className={styles.ticket_info_main}>В ПУТИ</div>
-                <div className={styles.ticket_info_main}>1 ПЕРСАДКА</div>
-                <div className={styles.ticket_info_details}>09:15 - 04:04</div>
-                <div className={styles.ticket_info_details}>19ч 49м</div>
-                <div className={styles.ticket_info_details}>IST</div>
-            </div>
-            <div className={styles.ticket_info}>
-                <div className={styles.ticket_info_main}>HKT-MOW</div>
-                <div className={styles.ticket_info_main}>В ПУТИ</div>
-                <div className={styles.ticket_info_main}>0 ПРЕСАДОК</div>
-                <div className={styles.ticket_info_details}>18:36 - 15:09</div>
-                <div className={styles.ticket_info_details}>21ч 33м</div>
-                <div className={styles.ticket_info_details}>#</div>
-            </div>
+        {flightInfo}
         </div>
     )
 }

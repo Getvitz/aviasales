@@ -13,21 +13,21 @@ export default function Sort() {
     const optimal = useSelector(state => state.sort.optimal)
 
     const showCheapest = () => {
-        dispatch({type: "CHEAPEST"})
+        dispatch({type: "SHOW_CHEAPEST"})
     }
 
     const showFastest = () => {
-        dispatch({type: "FASTEST"})
+        dispatch({type: "SHOW_FASTEST"})
     }
 
     const showOptimal = () => {
-        dispatch({type: "OPTIMAL"})
+        dispatch({type: "SHOW_OPTIMAL"})
     }
 
 
     return (
         <div className={cn('tabs')}>
-            <button type="button" className={cn('tab', {'selected': cheapest})} onClick={() => showCheapest()}><span>САМЫЙ ДЕШЕВЫЙ</span></button>
+            <button type="button" className={cn('tab', {'selected': cheapest})} onClick={() => showCheapest()}>САМЫЙ ДЕШЕВЫЙ</button>
             <button type="button" className={cn('tab', {'selected': fastest})} onClick={() => showFastest()}>САМЫЙ БЫСТРЫЙ</button>
             <button type="button" className={cn('tab', {'selected': optimal})} onClick={() => showOptimal()}>ОПТИМАЛЬНЫЙ</button>
         </div>
