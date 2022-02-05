@@ -1,17 +1,18 @@
 import React from "react";
+import propTypes from 'prop-types'
 import { format, parseISO } from 'date-fns';
 import styles from './ticket.module.scss';
 
-// eslint-disable-next-line
+
 export default function Ticket({price, carrier, segments}) {
     const logo = `https://pics.avs.io/99/36/'${carrier}.png`;
-// eslint-disable-next-line
+
     const flightInfo = segments.map((segment, i) => {
         const key = i;
         const {origin, destination, duration, stops, date} = segment;
-// eslint-disable-next-line
+
         const stopList = stops.length > 1 ? stops.join(', ') : stops.length === 0 ? 'ПРЯМОЙ' : stops;
-        // eslint-disable-next-line
+        
         const stopListTitle = stops.length === 1 ? 'Пересадка' : stops.length > 1 ?'Пересадки' :  'Без пересадок';
     
         return (
@@ -40,4 +41,16 @@ export default function Ticket({price, carrier, segments}) {
         {flightInfo}
         </div>
     )
+}
+
+Ticket.defaultProps = {
+  carrier: '',
+  segments: [],
+  price: 0
+};
+
+Ticket.propTypes = {
+  carrier: propTypes.string,
+  segments: propTypes.instanceOf(Array), 
+  price: propTypes.number
 }

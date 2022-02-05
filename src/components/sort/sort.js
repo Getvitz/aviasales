@@ -3,8 +3,6 @@ import cn from "classnames";
 import {useSelector, useDispatch } from "react-redux";
 import './sort.scss';
 
-
-
 export default function Sort() {
 
     const dispatch = useDispatch()

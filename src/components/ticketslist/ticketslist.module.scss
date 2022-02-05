@@ -1,10 +1,9 @@
 .ticketslist {
     display: grid;
-    gap: 20px;
 }
 
 .button {
-    max-width: 500px;
+    width: 100%;
     max-height: 50px;
     background: #2196F3;
     border-color: #2196F3;
@@ -17,6 +16,19 @@
 
 .button:hover {
     opacity: 0.8;
+}
+
+.noticketsmsg {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid  #2196F3;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.progressline {
+  margin-bottom: 20px; 
 }
 
 @media (min-width: 1024px) {

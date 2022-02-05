@@ -33,6 +33,8 @@
         "assert": "either"
       }],
       "default-param-last": ["off"],
+      "arrow-body-style": ["off"],
+      "no-nested-ternary": ["off"],
       "no-shadow": ["off"],
       "consistent-return": ["off"],
       "react/state-in-constructor": ["off"],
