@@ -1,22 +1,28 @@
 import React from "react";
 import propTypes from 'prop-types'
+import {v4 as uuid} from 'uuid';
 import { format, parseISO } from 'date-fns';
 import styles from './ticket.module.scss';
-
 
 export default function Ticket({price, carrier, segments}) {
     const logo = `https://pics.avs.io/99/36/'${carrier}.png`;
 
-    const flightInfo = segments.map((segment, i) => {
-        const key = i;
+    const flightInfo = segments.map((segment) => {
+
         const {origin, destination, duration, stops, date} = segment;
 
-        const stopList = stops.length > 1 ? stops.join(', ') : stops.length === 0 ? 'ПРЯМОЙ' : stops;
+        let stopList;
+        if (stops.length > 1) stopList = stops.join(', ');
+        else if (stops.length === 0) stopList = 'ПРЯМОЙ';
+        else stopList = stops
         
-        const stopListTitle = stops.length === 1 ? 'Пересадка' : stops.length > 1 ?'Пересадки' :  'Без пересадок';
+        let stopListTitle; 
+        if (stops.length === 1) stopListTitle = 'Пересадка';
+        else if (stops.length > 1) stopListTitle = 'Пересадки';
+        else stopListTitle = 'Без пересадок';
     
         return (
-          <div key={key} className={styles.ticket_info}>
+          <div key={uuid()} className={styles.ticket_info}>
             <div>
               <div className={styles.ticket_info_main}>{`${origin} - ${destination}`}</div>
               <div className={styles.ticket_info_details}>{`${format(parseISO(date.slice(0, -5)), 'HH:mm')} - ${format(new Date(date).getTime() + duration * 60 * 1000, 'HH:mm')}`}</div>

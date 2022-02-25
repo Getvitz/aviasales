@@ -15,7 +15,7 @@
     align-items: center;
     border-right: 1px solid #DFE5EC;
     height: 5.5vh;
-    font-size: calc(7px + 5 * (100vw/960));
+    font-size: calc(9px + 5 * (100vw/960));
 }
 
 .tab:first-child {
@@ -55,6 +55,6 @@
 
 @media (max-width: 425px){
   .tab{
-    font-size: calc(6px + 5 * ((100vw - 320px)/960));
+    font-size: calc(9px + 5 * ((100vw - 320px)/960));
   }
 }

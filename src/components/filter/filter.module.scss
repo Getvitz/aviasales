@@ -17,7 +17,6 @@
 .filter_item {
     display: flex;
     align-items: center;
-    padding: 0 20px 0 20px;
 }
 
 .filter_item:last-child {
@@ -33,9 +32,12 @@
 label {
     display: flex;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px 0 20px;
 }
 
-.label:hover {
+label:hover {
     cursor: pointer;
 }
 
@@ -61,6 +63,12 @@ label:before {
     align-items: center;
     justify-content: center;
   }
+
+.checkbox:checked + label:before {
+    content: "\2713";
+    color: #2196F3;
+    border-color: #2196F3;
+  }
   
 @media (max-width: 425px) {
     label:before {
@@ -72,12 +80,9 @@ label:before {
         min-height: 35px;
         font-size: calc(6px + 5 * ((100vw - 320px)/960));
     }
-  }
-  
-.checkbox:checked + label:before {
-    content: "\2713";
-    color: #2196F3;
-    border-color: #2196F3;
+    label {
+        padding: 0;
+    }
   }
 
   @media (max-width: 425px) {

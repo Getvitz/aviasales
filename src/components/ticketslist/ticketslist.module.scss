@@ -10,7 +10,7 @@
     color: white;
     height: 5.5vh;
     border-radius: 5px;
-    font-size: calc(7px + 5 * (100vw/960));
+    font-size: calc(9px + 5 * (100vw/960));
     margin-bottom: 15px;
 }
 
@@ -39,7 +39,7 @@
   
   @media (max-width: 425px){
     .button{
-      font-size: calc(6px + 5 * ((100vw - 320px)/960));
+      font-size: calc(9px + 5 * ((100vw - 320px)/960));
     }
   }
 

@@ -2,32 +2,38 @@ import React from "react";
 import cn from "classnames";
 import {useSelector, useDispatch } from "react-redux";
 import './sort.scss';
+import {
+    getCheapest,
+    getFastest,
+    getOptimal } from '../../redux/selectors/selectors'
+import {
+    SHOW_CHEAPEST,
+    SHOW_OPTIMAL,
+    SHOW_FASTEST } from '../../redux/actions/actionTypes'
 
 export default function Sort() {
 
+    const sortSelectors = {
+        cheapest: {type: SHOW_CHEAPEST},
+        fastest: {type: SHOW_FASTEST},
+        optimal: {type: SHOW_OPTIMAL},
+    }
+
     const dispatch = useDispatch()
-    const cheapest = useSelector(state => state.sort.cheapest)
-    const fastest = useSelector(state => state.sort.fastest)
-    const optimal = useSelector(state => state.sort.optimal)
 
-    const showCheapest = () => {
-        dispatch({type: "SHOW_CHEAPEST"})
+    const cheapest = useSelector(getCheapest);
+    const fastest = useSelector(getFastest);
+    const optimal = useSelector(getOptimal);
+
+    const showSorted = (event) => {
+        dispatch(sortSelectors[event.target.name])
     }
-
-    const showFastest = () => {
-        dispatch({type: "SHOW_FASTEST"})
-    }
-
-    const showOptimal = () => {
-        dispatch({type: "SHOW_OPTIMAL"})
-    }
-
 
     return (
         <div className={cn('tabs')}>
-            <button type="button" className={cn('tab', {'selected': cheapest})} onClick={() => showCheapest()}>САМЫЙ ДЕШЕВЫЙ</button>
-            <button type="button" className={cn('tab', {'selected': fastest})} onClick={() => showFastest()}>САМЫЙ БЫСТРЫЙ</button>
-            <button type="button" className={cn('tab', {'selected': optimal})} onClick={() => showOptimal()}>ОПТИМАЛЬНЫЙ</button>
+            <button type="button" name="cheapest" className={cn('tab', {'selected': cheapest})} onClick={(event) => showSorted(event)}>САМЫЙ ДЕШЕВЫЙ</button>
+            <button type="button" name="fastest" className={cn('tab', {'selected': fastest})} onClick={(event) => showSorted(event)}>САМЫЙ БЫСТРЫЙ</button>
+            <button type="button" name="optimal" className={cn('tab', {'selected': optimal})} onClick={(event) => showSorted(event)}>ОПТИМАЛЬНЫЙ</button>
         </div>
     )
 }

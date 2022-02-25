@@ -1,39 +1,44 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from './filter.module.scss';
+import { 
+    getAll, 
+    getNotransfer, 
+    getOneTransfer, 
+    getTwoTransfer, 
+    getThreeTransfer } from "../../redux/selectors/selectors";
+import {
+    FILTER_ALL,
+    FILTER_NOTRANSFER,
+    FILTER_ONETRANSFER,
+    FILTER_TWOTRANSFER,
+    FILTER_THREETRANSFER
+  } from '../../redux/actions/actionTypes'
 
 export default function Filter() {
 
-    const dispatch = useDispatch();
-    const all = useSelector(state => state.filter.all);
-    const notransfer = useSelector(state => state.filter.notransfer);
-    const onetransfer = useSelector(state => state.filter.onetransfer);
-    const twotransfer = useSelector(state => state.filter.twotransfer);
-    const threetransfer= useSelector(state => state.filter.threetransfer);
-
-    if(notransfer && onetransfer && twotransfer && threetransfer && !all) dispatch({type: "FILTER_ALL"})
-    const onCheckboxChange = (event) => {
-        switch(event.target.name) {
-            case "All": 
-                 dispatch({type: "FILTER_ALL"});
-                 break;
-            case "Notransfer": 
-                 dispatch({type: "FILTER_NOTRANSFER"})
-                 break;
-            case "Onetransfer": 
-                 dispatch({type: "FILTER_ONETRANSFER"})
-                 break;
-            case "Twotransfer": 
-                 dispatch({type: "FILTER_TWOTRANSFER"})
-                 break;
-            case "Threetransfer": 
-                 dispatch({type: "FILTER_THREETRANSFER"})
-                 break;
-        default: 
-            return event
-        }
+    const filterSelectors = {
+        All: {type: FILTER_ALL},
+        Notransfer: {type: FILTER_NOTRANSFER},
+        Onetransfer: {type: FILTER_ONETRANSFER},
+        Twotransfer: {type: FILTER_TWOTRANSFER},
+        Threetransfer: {type: FILTER_THREETRANSFER},
     }
 
+    const dispatch = useDispatch();
+
+    const all = useSelector(getAll);
+    const notransfer = useSelector(getNotransfer);
+    const onetransfer = useSelector(getOneTransfer);
+    const twotransfer = useSelector(getTwoTransfer);
+    const threetransfer= useSelector(getThreeTransfer);
+
+    const triggerAllSelector = notransfer && onetransfer && twotransfer && threetransfer && !all;
+
+    if(triggerAllSelector) dispatch({type: FILTER_ALL})
+    
+    const onCheckboxChange = (event) => dispatch(filterSelectors[event.target.name])
+    
     return (
         <ul className={styles.filter}>
             <li className={styles.header}>КОЛИЧЕСТВО ПЕРЕСАДОК</li>
