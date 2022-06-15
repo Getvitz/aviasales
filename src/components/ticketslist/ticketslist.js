@@ -117,9 +117,7 @@ Ticketslist.defaultProps = {
 }
 
 Ticketslist.propTypes = {
-    // getSearchId: propTypes.func.isRequired,
     getSearchIdSuccess: propTypes.func.isRequired,
-    // getTicketsData: propTypes.func.isRequired,
     searchId: propTypes.string,
     stop: propTypes.bool,
     ticketsData: propTypes.instanceOf(Array),
